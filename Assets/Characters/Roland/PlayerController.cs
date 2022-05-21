@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
   [SerializeField] float collisionOffset = 0.05f;
   [SerializeField] ContactFilter2D movementFilter;
 
-
   Vector2 movementVector = Vector2.zero;
   Rigidbody2D rb;
   List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
@@ -24,17 +23,39 @@ public class PlayerController : MonoBehaviour
   {
     if (movementVector != Vector2.zero)
     {
-      int count = rb.Cast(
-        movementVector,
-        movementFilter,
-        castCollisions,
-        movementSpeed * Time.fixedDeltaTime + collisionOffset
-        );
+      //try moveing in the direction
+      bool success = TryMove(movementVector);
 
-      if (count == 0)
+      //if collision detected, check in x then y to slide along
+      if (!success)
       {
-        rb.MovePosition(rb.position + movementVector * movementSpeed * Time.fixedDeltaTime);
+        success = TryMove(new Vector2(movementVector.x, 0));
+
+        if (!success)
+        {
+          success = TryMove(new Vector2(0, movementVector.y));
+        }
       }
+    }
+  }
+
+  bool TryMove(Vector2 direction)
+  {
+    int count = rb.Cast(
+            direction,
+            movementFilter,
+            castCollisions,
+            movementSpeed * Time.fixedDeltaTime + collisionOffset
+            );
+
+    if (count == 0)
+    {
+      rb.MovePosition(rb.position + direction * movementSpeed * Time.fixedDeltaTime);
+      return true;
+    }
+    else
+    {
+      return false;
     }
   }
 
