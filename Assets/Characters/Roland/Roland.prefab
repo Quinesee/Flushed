@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2644225563003056269}
   m_Layer: 0
   m_Name: Roland
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,6 +154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af90272595f7745bab1c6a50be3e304b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 2097481444498090169, guid: b47d5b47da0c44efebfbfdcf6e488a55, type: 3}
+  fireForce: 4
+  rateOfShot: 0.25
 --- !u!1 &8617445689597796935
 GameObject:
   m_ObjectHideFlags: 0
