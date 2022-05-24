@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,9 @@ public class ProjectileController : MonoBehaviour
   [SerializeField] GameObject projectilePrefab;
   [SerializeField] float fireForce = 4f;
   [SerializeField] float rateOfShot = 3f;
+  [SerializeField] Vector3 positionOffset = new Vector3(0, 0.05f, 0);
+  [SerializeField] SpriteRenderer headSprite;
+  [SerializeField] List<Sprite> headSprites = new List<Sprite>();
 
   Vector2 fireVector = Vector2.zero;
   float shotTimer = 0f;
@@ -40,7 +44,9 @@ public class ProjectileController : MonoBehaviour
   {
     Vector2 direction = GetShootDirection();
 
-    GameObject projectile = Instantiate(projectilePrefab, rb2D.transform.position, Quaternion.identity);
+    UpdateHeadSprite(direction);
+
+    GameObject projectile = Instantiate(projectilePrefab, rb2D.transform.position + positionOffset, Quaternion.identity);
     Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
     rb.AddForce(direction * fireForce, ForceMode2D.Impulse);
     Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), rb2D.GetComponent<Collider2D>());
@@ -66,5 +72,29 @@ public class ProjectileController : MonoBehaviour
     }
 
     return Vector2.zero;
+  }
+
+  void UpdateHeadSprite(Vector2 direction)
+  {
+    if (direction.x > 0)
+    {
+      headSprite.sprite = headSprites[0];
+    }
+    else if (direction.x < 0)
+    {
+      headSprite.sprite = headSprites[1];
+    }
+    else if (direction.y > 0)
+    {
+      headSprite.sprite = headSprites[2];
+    }
+    else if (direction.y < 0)
+    {
+      headSprite.sprite = headSprites[3];
+    }
+    else
+    {
+      headSprite.sprite = headSprites[3];
+    }
   }
 }

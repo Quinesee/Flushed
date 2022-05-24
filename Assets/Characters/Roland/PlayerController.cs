@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
   [SerializeField] float movementSpeed = 1f;
   [SerializeField] float collisionOffset = 0.05f;
   [SerializeField] ContactFilter2D movementFilter;
+  [SerializeField] SpriteRenderer bodySprite;
 
   Vector2 movementVector = Vector2.zero;
   Rigidbody2D rb;
@@ -17,6 +18,21 @@ public class PlayerController : MonoBehaviour
   void Start()
   {
     rb = GetComponent<Rigidbody2D>();
+  }
+
+  void Update()
+  {
+    if (movementVector != Vector2.zero)
+    {
+      if (movementVector.x > 0)
+      {
+        bodySprite.flipX = false;
+      }
+      else if (movementVector.x < 0)
+      {
+        bodySprite.flipX = true;
+      }
+    }
   }
 
   void FixedUpdate()

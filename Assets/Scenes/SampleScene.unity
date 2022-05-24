@@ -3135,23 +3135,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a750b0da96f2a4b6399426dd67183992, type: 3}
---- !u!1 &1464188266 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7613410691031762999, guid: a2ad3c25d8cb045599448b2086396cc3, type: 3}
-  m_PrefabInstance: {fileID: 2384900612368806865}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1464188273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464188266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f62d6b6ec8494057b6f8b40e632c36e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1686874920
 GameObject:
   m_ObjectHideFlags: 0
@@ -4064,6 +4047,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!212 &2145515870 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4350944858216631607, guid: a2ad3c25d8cb045599448b2086396cc3, type: 3}
+  m_PrefabInstance: {fileID: 2384900612368806865}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2384900612368806865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4071,17 +4059,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1262441887291226017, guid: a2ad3c25d8cb045599448b2086396cc3, type: 3}
+      propertyPath: bodySprite
+      value: 
+      objectReference: {fileID: 2145515870}
     - target: {fileID: 2055570273523071783, guid: a2ad3c25d8cb045599448b2086396cc3, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2055570273523071783, guid: a2ad3c25d8cb045599448b2086396cc3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.016
       objectReference: {fileID: 0}
     - target: {fileID: 2055570273523071783, guid: a2ad3c25d8cb045599448b2086396cc3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.481
+      value: 0.554
       objectReference: {fileID: 0}
     - target: {fileID: 2055570273523071783, guid: a2ad3c25d8cb045599448b2086396cc3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4115,6 +4107,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2644225563003056269, guid: a2ad3c25d8cb045599448b2086396cc3, type: 3}
+      propertyPath: headSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644225563003056269, guid: a2ad3c25d8cb045599448b2086396cc3, type: 3}
+      propertyPath: headSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 2029208771, guid: e9d61ed2e53c843f9a93cbcf001cbf8e, type: 3}
+    - target: {fileID: 2644225563003056269, guid: a2ad3c25d8cb045599448b2086396cc3, type: 3}
+      propertyPath: headSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 1446555145, guid: e9d61ed2e53c843f9a93cbcf001cbf8e, type: 3}
+    - target: {fileID: 2644225563003056269, guid: a2ad3c25d8cb045599448b2086396cc3, type: 3}
+      propertyPath: headSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: -260084201, guid: e9d61ed2e53c843f9a93cbcf001cbf8e, type: 3}
+    - target: {fileID: 2644225563003056269, guid: a2ad3c25d8cb045599448b2086396cc3, type: 3}
+      propertyPath: headSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 1056730619, guid: e9d61ed2e53c843f9a93cbcf001cbf8e, type: 3}
     - target: {fileID: 7613410691031762999, guid: a2ad3c25d8cb045599448b2086396cc3, type: 3}
       propertyPath: m_Name
       value: Roland
