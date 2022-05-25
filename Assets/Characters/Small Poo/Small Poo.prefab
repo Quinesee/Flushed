@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6138620733740489235}
   - component: {fileID: 5962190943118993382}
-  - component: {fileID: 7986625465000773734}
+  - component: {fileID: 3967211297757120073}
   - component: {fileID: 7620414371484386014}
   - component: {fileID: 2492116516215150486}
   m_Layer: 0
@@ -87,8 +87,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &7986625465000773734
-BoxCollider2D:
+--- !u!70 &3967211297757120073
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -100,19 +100,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0034498349, y: -0.032110013}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.08141127, y: 0.09577997}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.0037869364, y: -0.029033132}
+  m_Size: {x: 0.08678593, y: 0.09663447}
+  m_Direction: 0
 --- !u!50 &7620414371484386014
 Rigidbody2D:
   serializedVersion: 4
@@ -147,4 +137,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  movementSpeed: 1
+  movementSpeed: 0.5
+  collisionOffset: 0.001
+  movementFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 1
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  attackDist: 0.13

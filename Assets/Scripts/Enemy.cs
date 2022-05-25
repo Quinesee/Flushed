@@ -7,10 +7,12 @@ public class Enemy : MonoBehaviour
   [SerializeField] float movementSpeed = 1f;
   [SerializeField] float collisionOffset = 0.05f;
   [SerializeField] ContactFilter2D movementFilter;
+  [SerializeField] float attackDist = 0.05f;
 
   Player player;
   Rigidbody2D rb;
   List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+  SpriteRenderer spriteRenderer;
 
   public float Health
   {
@@ -34,22 +36,56 @@ public class Enemy : MonoBehaviour
   {
     player = FindObjectOfType<Player>();
     rb = GetComponent<Rigidbody2D>();
+    spriteRenderer = GetComponent<SpriteRenderer>();
+  }
+
+  void Update()
+  {
+    Vector2 direction = player.gameObject.transform.position - gameObject.transform.position;
+
+    if (direction != Vector2.zero)
+    {
+      if (direction.x > 0)
+      {
+        spriteRenderer.flipX = true;
+      }
+      else if (direction.x < 0)
+      {
+        spriteRenderer.flipX = false;
+      }
+    }
   }
 
   void FixedUpdate()
   {
     Vector2 direction = player.gameObject.transform.position - gameObject.transform.position;
-    bool success = TryMove(direction);
-    //if collision detected, check in x then y to slide along
-    if (!success)
-    {
-      success = TryMove(new Vector2(direction.x, 0));
+    float dist = Vector2.Distance(player.gameObject.transform.position, gameObject.transform.position);
 
+    if (dist < attackDist)
+    {
+      Attack();
+    }
+    else
+    {
+      bool success = TryMove(direction);
+      //if collision detected, check in x then y to slide along
       if (!success)
       {
-        success = TryMove(new Vector2(0, direction.y));
+        success = TryMove(new Vector2(direction.x, 0));
+
+        if (!success)
+        {
+          success = TryMove(new Vector2(0, direction.y));
+        }
       }
     }
+
+
+  }
+
+  void Attack()
+  {
+    player.TakeDamage(1f);
   }
 
   public void TakeDamage(float amount)

@@ -4,15 +4,75 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+  [SerializeField] float health = 10f;
+  [SerializeField] float hurtTime = 3f;
+  [SerializeField] SpriteRenderer headSprite;
+  [SerializeField] SpriteRenderer bodySprite;
+
+  float invinsibleTimer = 0f;
+  float flashTimer = 0f;
+  bool isHurt = false;
+  public float Health
+  {
+    set
     {
-        
+      health = value;
+
+      if (health <= 0)
+      {
+        Defeated();
+      }
     }
 
-    // Update is called once per frame
-    void Update()
+    get
     {
-        
+      return health;
     }
+  }
+
+  void Update()
+  {
+    if (invinsibleTimer > 0)
+    {
+      invinsibleTimer -= Time.deltaTime;
+    }
+    else
+    {
+      isHurt = false;
+    }
+
+    if (isHurt)
+    {
+      StartCoroutine("FlashSprite");
+    }
+  }
+
+  public void TakeDamage(float amount)
+  {
+    if (invinsibleTimer <= 0)
+    {
+      Health -= amount;
+      invinsibleTimer = hurtTime;
+      flashTimer = hurtTime;
+      isHurt = true;
+    }
+
+  }
+
+  void Defeated()
+  {
+    Debug.Log("Player Ded");
+    // Destroy(gameObject);
+  }
+
+  IEnumerator FlashSprite()
+  {
+    yield return new WaitForSeconds(0.1f);
+    headSprite.material.color = Color.red;
+    bodySprite.material.color = Color.red;
+    yield return new WaitForSeconds(0.1f);
+    headSprite.material.color = Color.white;
+    bodySprite.material.color = Color.white;
+  }
 }

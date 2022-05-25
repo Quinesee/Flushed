@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2055570273523071783}
   - component: {fileID: 2384900612368806867}
-  - component: {fileID: 2384900612368806868}
+  - component: {fileID: 1971385461834510848}
   - component: {fileID: 388278092810819821}
   - component: {fileID: 1262441887291226017}
   - component: {fileID: 2644225563003056269}
@@ -144,8 +144,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!61 &2384900612368806868
-BoxCollider2D:
+--- !u!70 &1971385461834510848
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -157,19 +157,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.060176294}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.091538616, y: 0.039165802}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: -0.01469177}
+  m_Size: {x: 0.094036885, y: 0.129933}
+  m_Direction: 0
 --- !u!114 &388278092810819821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +218,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  bodySprite: {fileID: 4350944858216631607}
 --- !u!114 &2644225563003056269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,9 +233,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2097481444498090169, guid: b47d5b47da0c44efebfbfdcf6e488a55, type: 3}
   fireForce: 4
-  rateOfShot: 0.25
+  rateOfShot: 0.5
   positionOffset: {x: 0, y: 0.05, z: 0}
   headSprite: {fileID: 8652168567953776054}
+  headSprites:
+  - {fileID: 2029208771, guid: e9d61ed2e53c843f9a93cbcf001cbf8e, type: 3}
+  - {fileID: 1446555145, guid: e9d61ed2e53c843f9a93cbcf001cbf8e, type: 3}
+  - {fileID: -260084201, guid: e9d61ed2e53c843f9a93cbcf001cbf8e, type: 3}
+  - {fileID: 1056730619, guid: e9d61ed2e53c843f9a93cbcf001cbf8e, type: 3}
 --- !u!114 &1464188273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +253,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f62d6b6ec8494057b6f8b40e632c36e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 10
+  hurtTime: 1
+  headSprite: {fileID: 8652168567953776054}
+  bodySprite: {fileID: 4350944858216631607}
 --- !u!1 &8466455336626336009
 GameObject:
   m_ObjectHideFlags: 0
