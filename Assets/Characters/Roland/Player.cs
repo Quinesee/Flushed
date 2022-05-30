@@ -73,7 +73,6 @@ public class Player : MonoBehaviour
 
   void Defeated()
   {
-    Debug.Log("Player Ded");
     gm.PauseGame();
   }
 
