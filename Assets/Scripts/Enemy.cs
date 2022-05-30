@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
   [SerializeField]
   float attackDist = 0.05f;
 
+  GameManager gm;
+
   Player player;
 
   AIPath aiPath;
@@ -42,6 +44,7 @@ public class Enemy : MonoBehaviour
 
   void Start()
   {
+    gm = FindObjectOfType<GameManager>();
     player = FindObjectOfType<Player>();
     rb = GetComponent<Rigidbody2D>();
     spriteRenderer = GetComponent<SpriteRenderer>();
@@ -77,6 +80,7 @@ public class Enemy : MonoBehaviour
 
   void Defeated()
   {
+    gm.Score += 1;
     Destroy(gameObject);
   }
 }

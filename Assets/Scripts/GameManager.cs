@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
   [SerializeField] int score = 0;
   [SerializeField] GameObject pauseMenu;
+  [SerializeField] TextMeshProUGUI scoreText;
 
   public bool isPaused = false;
 
@@ -15,12 +18,23 @@ public class GameManager : MonoBehaviour
     set
     {
       score = value;
+      Debug.Log(Score);
     }
 
     get
     {
       return score;
     }
+  }
+
+  void Awake()
+  {
+    scoreText.text = Score.ToString();
+  }
+
+  void Update()
+  {
+    scoreText.text = Score.ToString();
   }
 
   public void PauseGame()

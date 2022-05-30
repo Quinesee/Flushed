@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f62d6b6ec8494057b6f8b40e632c36e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 5
   hurtTime: 1
   headSprite: {fileID: 8652168567953776054}
   bodySprite: {fileID: 4350944858216631607}
