@@ -206,14 +206,14 @@ MonoBehaviour:
   collisionOffset: 0.001
   movementFilter:
     useTriggers: 0
-    useLayerMask: 0
+    useLayerMask: 1
     useDepth: 0
     useOutsideDepth: 0
     useNormalAngle: 0
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 255
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2097481444498090169, guid: b47d5b47da0c44efebfbfdcf6e488a55, type: 3}
   fireForce: 4
-  rateOfShot: 0.5
+  rateOfShot: 0.25
   positionOffset: {x: 0, y: 0.05, z: 0}
   headSprite: {fileID: 8652168567953776054}
   headSprites:

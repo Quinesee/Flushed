@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
   void Defeated()
   {
     Debug.Log("Player Ded");
+    Time.timeScale = 0f;
     // Destroy(gameObject);
   }
 
