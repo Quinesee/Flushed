@@ -4,79 +4,79 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]
-    float health = 10f;
+  [SerializeField]
+  int health = 10;
 
-    [SerializeField]
-    float attackDist = 0.05f;
+  [SerializeField]
+  float attackDist = 0.05f;
 
-    Player player;
+  Player player;
 
-    AIPath aiPath;
+  AIPath aiPath;
 
-    Rigidbody2D rb;
+  Rigidbody2D rb;
 
-    SpriteRenderer spriteRenderer;
+  SpriteRenderer spriteRenderer;
 
-    public float Health
+  public int Health
+  {
+    set
     {
-        set
-        {
-            health = value;
+      health = value;
 
-            if (health <= 0)
-            {
-                Defeated();
-            }
-        }
-        get
-        {
-            return health;
-        }
+      if (health <= 0)
+      {
+        Defeated();
+      }
     }
-
-    void Awake()
+    get
     {
-        aiPath = GetComponent<AIPath>();
+      return health;
     }
+  }
 
-    void Start()
+  void Awake()
+  {
+    aiPath = GetComponent<AIPath>();
+  }
+
+  void Start()
+  {
+    player = FindObjectOfType<Player>();
+    rb = GetComponent<Rigidbody2D>();
+    spriteRenderer = GetComponent<SpriteRenderer>();
+  }
+
+  void Update()
+  {
+    aiPath.destination = player.gameObject.transform.position;
+  }
+
+  void FixedUpdate()
+  {
+    float dist =
+        Vector2
+            .Distance(player.gameObject.transform.position,
+            gameObject.transform.position);
+
+    if (dist < attackDist)
     {
-        player = FindObjectOfType<Player>();
-        rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+      Attack();
     }
+  }
 
-    void Update()
-    {
-        aiPath.destination = player.gameObject.transform.position;
-    }
+  void Attack()
+  {
+    player.TakeDamage(1);
+  }
 
-    void FixedUpdate()
-    {
-        float dist =
-            Vector2
-                .Distance(player.gameObject.transform.position,
-                gameObject.transform.position);
+  public void TakeDamage(int amount)
+  {
+    Health -= amount;
+  }
 
-        if (dist < attackDist)
-        {
-            Attack();
-        }
-    }
-
-    void Attack()
-    {
-        player.TakeDamage(1f);
-    }
-
-    public void TakeDamage(float amount)
-    {
-        Health -= amount;
-    }
-
-    void Defeated()
-    {
-        Destroy (gameObject);
-    }
+  void Defeated()
+  {
+    Destroy(gameObject);
+  }
 }

@@ -5,17 +5,19 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-  [SerializeField] float health = 10f;
+  [SerializeField] int health = 10;
   [SerializeField] float hurtTime = 3f;
   [SerializeField] SpriteRenderer headSprite;
   [SerializeField] SpriteRenderer bodySprite;
+
+  [SerializeField] HealthBar healthBar;
 
   float invinsibleTimer = 0f;
   float flashTimer = 0f;
   bool isHurt = false;
   GameManager gm;
 
-  public float Health
+  public int Health
   {
     set
     {
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
   void Start()
   {
     gm = FindObjectOfType<GameManager>();
+    healthBar.SetMaxHealth(Health);
   }
 
   void Update()
@@ -55,7 +58,7 @@ public class Player : MonoBehaviour
     }
   }
 
-  public void TakeDamage(float amount)
+  public void TakeDamage(int amount)
   {
     if (invinsibleTimer <= 0)
     {
@@ -63,6 +66,7 @@ public class Player : MonoBehaviour
       invinsibleTimer = hurtTime;
       flashTimer = hurtTime;
       isHurt = true;
+      healthBar.SetHealth(Health);
     }
 
   }

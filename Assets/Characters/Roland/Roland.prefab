@@ -157,8 +157,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.01469177}
-  m_Size: {x: 0.094036885, y: 0.129933}
+  m_Offset: {x: 0, y: 0.0062269717}
+  m_Size: {x: 0.094036885, y: 0.17177048}
   m_Direction: 0
 --- !u!114 &388278092810819821
 MonoBehaviour:
@@ -257,6 +257,7 @@ MonoBehaviour:
   hurtTime: 1
   headSprite: {fileID: 8652168567953776054}
   bodySprite: {fileID: 4350944858216631607}
+  healthBar: {fileID: 0}
 --- !u!1 &8466455336626336009
 GameObject:
   m_ObjectHideFlags: 0

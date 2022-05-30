@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
   {
     if (other.gameObject.tag == "Enemy")
     {
-      other.gameObject.GetComponent<Enemy>().TakeDamage(5f);
+      other.gameObject.GetComponent<Enemy>().TakeDamage(5);
     }
 
     GameObject fx = Instantiate(hitFXPrefab, transform.position, Quaternion.identity);
