@@ -47,7 +47,6 @@ public class Enemy : MonoBehaviour
     gm = FindObjectOfType<GameManager>();
     player = FindObjectOfType<Player>();
     rb = GetComponent<Rigidbody2D>();
-    spriteRenderer = GetComponent<SpriteRenderer>();
   }
 
   void Update()
