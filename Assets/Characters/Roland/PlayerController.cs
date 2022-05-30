@@ -13,43 +13,51 @@ public class PlayerController : MonoBehaviour
   Vector2 movementVector = Vector2.zero;
   Rigidbody2D rb;
   List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+  GameManager gm;
 
   // Start is called before the first frame update
   void Start()
   {
     rb = GetComponent<Rigidbody2D>();
+    gm = FindObjectOfType<GameManager>();
   }
 
   void Update()
   {
-    if (movementVector != Vector2.zero)
+    if (!gm.isPaused)
     {
-      if (movementVector.x > 0)
+      if (movementVector != Vector2.zero)
       {
-        bodySprite.flipX = false;
-      }
-      else if (movementVector.x < 0)
-      {
-        bodySprite.flipX = true;
+        if (movementVector.x > 0)
+        {
+          bodySprite.flipX = false;
+        }
+        else if (movementVector.x < 0)
+        {
+          bodySprite.flipX = true;
+        }
       }
     }
   }
 
   void FixedUpdate()
   {
-    if (movementVector != Vector2.zero)
+    if (!gm.isPaused)
     {
-      //try moveing in the direction
-      bool success = TryMove(movementVector);
-
-      //if collision detected, check in x then y to slide along
-      if (!success)
+      if (movementVector != Vector2.zero)
       {
-        success = TryMove(new Vector2(movementVector.x, 0));
+        //try moveing in the direction
+        bool success = TryMove(movementVector);
 
+        //if collision detected, check in x then y to slide along
         if (!success)
         {
-          success = TryMove(new Vector2(0, movementVector.y));
+          success = TryMove(new Vector2(movementVector.x, 0));
+
+          if (!success)
+          {
+            success = TryMove(new Vector2(0, movementVector.y));
+          }
         }
       }
     }

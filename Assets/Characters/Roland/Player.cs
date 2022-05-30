@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
   float invinsibleTimer = 0f;
   float flashTimer = 0f;
   bool isHurt = false;
+  GameManager gm;
+
   public float Health
   {
     set
@@ -29,6 +31,11 @@ public class Player : MonoBehaviour
     {
       return health;
     }
+  }
+
+  void Start()
+  {
+    gm = FindObjectOfType<GameManager>();
   }
 
   void Update()
@@ -63,8 +70,7 @@ public class Player : MonoBehaviour
   void Defeated()
   {
     Debug.Log("Player Ded");
-    Time.timeScale = 0f;
-    // Destroy(gameObject);
+    gm.PauseGame();
   }
 
   IEnumerator FlashSprite()
